@@ -1,0 +1,1 @@
+var app = angular.module('guanli',[]); //定义模块
