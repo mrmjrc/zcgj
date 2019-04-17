@@ -1,6 +1,6 @@
 //猪只资料控制层
 app.controller("zzzlController",function ($scope,$controller,zzzlService) {
-    $controller('baseController',{$scope:$scope});  //伪继承，公用scope
+    $controller('baseController',{$scope:$scope});
 
     //分页
  /*   $scope.findPage=function(page,size) {

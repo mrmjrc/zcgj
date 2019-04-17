@@ -1,4 +1,4 @@
-app.constructor('baseController',function ($scope) {
+app.controller('baseController',function ($scope) {
     //重新加载列表 数据
     $scope.reloadList=function(){
         //切换页码
