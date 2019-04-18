@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Swaq {
+public class SwaqPo {
     private Integer id;
     private String earNumber;
     private String physicalExamination;

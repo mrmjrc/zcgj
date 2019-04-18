@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Scgl {
+public class ScglPo {
     private Integer id;
     private String earNumber;
     private Integer age;

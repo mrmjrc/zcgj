@@ -3,7 +3,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>zzgl_edit</title>
+    <title>rzgl_edit</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -21,13 +21,13 @@
 
       <script type="text/javascript" src="../js/angularjs/angular.min.js"></script>
       <script type="text/javascript" src="../js/base.js"></script>
-      <script type="text/javascript" src="../js/service/yzglService.js"></script>
+      <script type="text/javascript" src="../js/service/rzglService.js"></script>
       <script type="text/javascript" src="../js/controller/baseController.js"></script>
-      <script type="text/javascript" src="../js/controller/yzglController.js"></script>
+      <script type="text/javascript" src="../js/controller/rzglController.js"></script>
 
   </head>
 
-  <body ng-app="zcgj" ng-controller="yzglController" ng-init="selectById()">
+  <body ng-app="zcgj" ng-controller="rzglController" ng-init="selectById()">
   <div class="x-body">
       <form class="layui-form" ng-submit="updateById()">
           <div class="layui-form-item">
@@ -37,24 +37,6 @@
               <div class="layui-input-inline">
                   <input type="text" id="eh" name="eh" disabled="disabled" required="" lay-verify="required" ng-model="entity.earNumber"
                          autocomplete="on" class="layui-input" ng-blur="selectByEarNum(entity.earNumber)" >
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>母猪耳号
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="mzeh" name="mzeh" disabled="disabled" required="" lay-verify="required" ng-model="entity.mearNumber"
-                         autocomplete="on" class="layui-input" ng-blur="selectByMearNum(entity.mearNumber)" >
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>性别
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="xb" name="xb" required="" lay-verify="required" ng-model="entity.gender"
-                         autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">

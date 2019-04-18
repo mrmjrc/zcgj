@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Rzgl {
+public class RzglPo {
     private Integer id;
     private String earNumber;
     private Integer age;

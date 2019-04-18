@@ -3,7 +3,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>zzgl</title>
+    <title>rzgl</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -26,20 +26,20 @@
     <link rel="stylesheet" href="../js/angularjs/pagination.css">
 
     <script type="text/javascript" src="../js/base_pagination.js"></script>
-    <script type="text/javascript" src="../js/service/yzglService.js"></script>
+    <script type="text/javascript" src="../js/service/rzglService.js"></script>
     <script type="text/javascript" src="../js/controller/baseController.js"></script>
-    <script type="text/javascript" src="../js/controller/yzglController.js"></script>
+    <script type="text/javascript" src="../js/controller/rzglController.js"></script>
 
 
 
   </head>
   
-  <body ng-app="zcgj" ng-controller="yzglController" >
+  <body ng-app="zcgj" ng-controller="rzglController" >
     <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">猪只管理</a>
         <a>
-          <cite>幼猪管理</cite></a>
+          <cite>肉猪管理</cite></a>
       </span>
       <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
@@ -48,8 +48,6 @@
       <div class="layui-row layui-col-md12 x-so">
 
           <input type="text" name="username"  placeholder="请输入耳号" autocomplete="true" class="layui-input"  ng-model="searchEntity.earNumber">
-          <input type="text" name="username"  placeholder="请输入母猪耳号" autocomplete="true" class="layui-input"  ng-model="searchEntity.mearNumber">
-          <input type="text" name="username"  placeholder="请输入性别" autocomplete="true" class="layui-input"  ng-model="searchEntity.gender">
           <input type="text" name="username"  placeholder="请输入日龄" autocomplete="true" class="layui-input"  ng-model="searchEntity.age">
           <input type="text" name="username"  placeholder="请输入现在舍号" autocomplete="true" class="layui-input"  ng-model="searchEntity.currentHouseNumber">
           <input type="text" name="username"  placeholder="请输入之前舍号" autocomplete="true" class="layui-input"  ng-model="searchEntity.beforeHouseNumber">
@@ -59,8 +57,8 @@
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" ng-click="dele()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" ng-click="entity={}" onclick="x_admin_show('添加猪只','./yzgl-add.html')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有幼猪：{{paginationConf.totalItems}} 只</span>
+        <button class="layui-btn" ng-click="entity={}" onclick="x_admin_show('添加猪只','./rzgl-add.html')"><i class="layui-icon"></i>添加</button>
+        <span class="x-right" style="line-height:40px">共有肉猪：{{paginationConf.totalItems}} 只</span>
       </xblock>
       <table class="layui-table">
         <thead>
@@ -69,8 +67,6 @@
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>耳号</th>
-            <th>母猪耳号</th>
-            <th>性别</th>
             <th>日龄</th>
             <th>品种</th>
             <th>是否转舍</th>
@@ -90,8 +86,6 @@
               <input type="checkbox" name="" lay-skin="primary" ng-click="updateSelection($event,entity.id)"></td>
             </td>
             <td>{{entity.earNumber}}</td>
-            <td>{{entity.mearNumber}}</td>
-            <td>{{entity.gender}}</td>
             <td>{{entity.age}}</td>
             <td>{{entity.varieties}}</td>
             <td>{{entity.isTransfer}}</td>
