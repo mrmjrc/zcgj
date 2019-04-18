@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * @description:
+ * @description: 种猪 ServiceImpl
  * @author: 稚生
  * @date: 2019/4/15 10:41
  * @version: V1.0
@@ -38,6 +38,7 @@ public class ZzglServiceimpl implements ZzglService {
     public ZzglPo selectByEarNum(String earNumber) {
         return zzglMapper.selectByEarNum(earNumber);
     }
+
 
     @Override
     public void deleteById(Integer id) {

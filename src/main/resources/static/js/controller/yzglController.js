@@ -1,5 +1,5 @@
-//种猪控制层
-app.controller("zzglController",function ($scope,$controller,zzglService) {
+//幼猪控制层
+app.controller("yzglController",function ($scope,$controller,yzglService) {
     $controller('baseController',{$scope:$scope});
 
 
@@ -13,7 +13,7 @@ app.controller("zzglController",function ($scope,$controller,zzglService) {
 
  // 编辑跳转
     $scope.jumpById=function (id) {
-        x_admin_show('编辑','zzgl-edit.html',localStorage.setItem("entityId",id));
+        x_admin_show('编辑','yzgl-edit.html',localStorage.setItem("entityId",id));
     };
 
     //批量删除
@@ -21,7 +21,7 @@ app.controller("zzglController",function ($scope,$controller,zzglService) {
         //获取选中的复选框
         var isDelete = confirm("确定删除？"); //layer.confirm("确定删除？");
         if (isDelete) {
-            zzglService.dele($scope.selectIds).success(
+            yzglService.dele($scope.selectIds).success(
                 function (response) {
                     if (response.result) {
                         $scope.reloadList();//刷新列表
@@ -35,7 +35,7 @@ app.controller("zzglController",function ($scope,$controller,zzglService) {
     $scope.deleteById=function (id) {
         var isDelete = confirm("确定删除？"); //layer.confirm("确定删除？");
         if (isDelete){
-            zzglService.deleteById(id).success(
+            yzglService.deleteById(id).success(
                 function (response) {
                     if (response.result){
                         $scope.reloadList();   //刷新列表
@@ -47,7 +47,7 @@ app.controller("zzglController",function ($scope,$controller,zzglService) {
     //条件分页查询
     $scope.searchEntity={};
     $scope.searchByExample=function(page,size) {
-        zzglService.searchByExample(page,size,$scope.searchEntity).success(
+        yzglService.searchByExample(page,size,$scope.searchEntity).success(
             function (response) {
                 $scope.list = response.rows;
                 $scope.paginationConf.totalItems = response.total;//更新总记录数
@@ -55,16 +55,24 @@ app.controller("zzglController",function ($scope,$controller,zzglService) {
     };
 
     $scope.selectByEarNum=function (earNumber) {
-        zzglService.selectByEarNum(earNumber).success(
+        yzglService.selectByEarNum(earNumber).success(
             function (response) {
                 if (response.result){
                     alert("该耳号已存在");
                 }
         });
     };
+    $scope.selectByMearNum=function(mearNumber){
+        yzglService.selectByMearNum(mearNumber).success(
+            function (response) {
+                if (!response.result){
+                    alert("该母猪耳号不存在");
+                }
+            });
+    }
 
     $scope.add=function () {
-        zzglService.add($scope.entity).success(
+        yzglService.add($scope.entity).success(
             function (response) {
             alert(response.message);
             //添加完成后刷新列表
@@ -74,13 +82,13 @@ app.controller("zzglController",function ($scope,$controller,zzglService) {
 
     $scope.selectById=function () {
         var entityId = localStorage.getItem("entityId");
-        zzglService.selectById(entityId).success(
+        yzglService.selectById(entityId).success(
             function (response) {
                 $scope.entity = response;
             });
     };
     $scope.updateById=function () {
-        zzglService.update($scope.entity).success(
+        yzglService.update($scope.entity).success(
             function (response) {
                 alert(response.message);
                 $scope.reloadList();

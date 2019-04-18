@@ -4,7 +4,9 @@ package cn.mrmj.zcgj.controller;
 
 import cn.mrmj.zcgj.dto.PageResult;
 import cn.mrmj.zcgj.dto.Result;
+import cn.mrmj.zcgj.po.YzglPo;
 import cn.mrmj.zcgj.po.ZzglPo;
+import cn.mrmj.zcgj.service.YzglService;
 import cn.mrmj.zcgj.service.ZzglService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,32 +16,35 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 
 /**
- * @description: 种猪 Controller
+ * @description: 幼猪 Controller
  * @author: 稚生
  * @date: 2019/4/12 15:18
  * @version: V1.0
  */
 @Controller
-@RequestMapping("/zzgl")
-public class ZzglController {
+@RequestMapping("/yzgl")
+public class YzglController {
 
     @Resource
     private ZzglService zzglService;
 
+    @Resource
+    private YzglService yzglService;
+
     @RequestMapping("/findPage")
     @ResponseBody
     public PageResult query(int page, int size) {
-        return zzglService.findZzgl(page, size);
+        return yzglService.findYzgl(page, size);
     }
 
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(ZzglPo zzglPo) {
+    public Result add(YzglPo yzglPo) {
         try {
-            if (null != zzglService.selectByEarNum(zzglPo.getEarNumber())) {
+            if (null != yzglService.selectByEarNum(yzglPo.getEarNumber()) || null == zzglService.selectByEarNum(yzglPo.getMearNumber())) {
                 return new Result(false, "添加失败");
             } else {
-                zzglService.addZzgl(zzglPo);
+                yzglService.addYzgl(yzglPo);
                 return new Result(true, "添加成功");
             }
         } catch (Exception e) {
@@ -49,10 +54,9 @@ public class ZzglController {
     }
     @RequestMapping("/updateById")
     @ResponseBody
-    public Result updateById(ZzglPo zzglPo) {
-        //System.out.println(zzglPo);
+    public Result updateById(YzglPo yzglPo) {
         try {
-            zzglService.update(zzglPo);
+            yzglService.update(yzglPo);
             return new Result(true, "修改成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,11 +75,21 @@ public class ZzglController {
             return new Result(false, "正常");
         }
     }
+    @RequestMapping("/selectByMearNum")
+    @ResponseBody
+    public Result selectByMearNum(String mearNumber){
+        ZzglPo zzglPo = zzglService.selectByEarNum(mearNumber);
+        if (zzglPo != null) {
+            return new Result(true, "耳号存在");
+        } else {
+            return new Result(false, "耳号不存在");
+        }
+    }
 
     @RequestMapping("/selectById")
     @ResponseBody
-    public ZzglPo selectById(int id) {
-        return  zzglService.findOne(id);
+    public YzglPo selectById(int id) {
+        return yzglService.findOne(id);
 
     }
 
@@ -85,7 +99,7 @@ public class ZzglController {
     public Result deleteById(Integer id) {
         //System.out.println(id);
         try {
-            zzglService.deleteById(id);
+            yzglService.deleteById(id);
             return new Result(true, "删除成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,7 +111,7 @@ public class ZzglController {
     @ResponseBody
     public Result delete(Long[] ids) {
         try {
-            zzglService.delete(ids);
+            yzglService.delete(ids);
             return new Result(true, "删除成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -107,8 +121,8 @@ public class ZzglController {
 
     @RequestMapping("/searchByExample")
     @ResponseBody
-    public PageResult query(@RequestBody ZzglPo zzglPo, int page, int size) {
-        return zzglService.findZzgl(zzglPo, page, size);
+    public PageResult query(@RequestBody YzglPo yzglPo, int page, int size) {
+        return yzglService.findYzgl(yzglPo, page, size);
     }
 
 
