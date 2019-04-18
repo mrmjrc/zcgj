@@ -2,59 +2,61 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="cn.mrmj.zcgj.mapper.ZzzlMapper">
+<mapper namespace="cn.mrmj.zcgj.mapper.ZzglMapper">
     <sql id="Base_Column_List" >
-             id, ear_number,gender,state,is_present,age,varieties,house_number,approach_time,approach_type,departure_type
+           id,ear_number,gender,is_present,age,varieties,production_situation,
+           is_transfer,current_house_number,before_house_number,approach_weight,
+           approach_time,approach_type,leaving_time,departure_type
     </sql>
 
-    <select id="query" resultType="ZzzlPo">
+    <select id="query" resultType="ZzglPo">
         select
          <include refid="Base_Column_List" />
-         from zzzl
+         from zzgl
     </select>
 
-    <insert id="insert" parameterType="ZzzlPo" >
-        INSERT INTO zzzl(ear_number,gender,state,is_present,age,varieties,house_number,approach_time,approach_type,departure_type)
-        VALUES(#{earNumber},#{gender},#{state},#{isPresent},#{age},
-        #{varieties},#{houseNumber},
-        #{approachTime},#{approachType},#{departureType})
+    <insert id="insert" parameterType="ZzglPo" >
+        INSERT INTO zzgl(ear_number,gender,is_present,age,varieties,production_situation,
+           is_transfer,current_house_number,before_house_number,approach_weight,
+           approach_time,approach_type,leaving_time,departure_type)
+        VALUES(#{earNumber},#{gender},#{isPresent},#{age},#{varieties},#{productionSituation},
+        #{isTransfer},#{currentHouseNumber},#{beforeHouseNumber},#{approachWeight},
+        #{approachTime},#{approachType},#{leavingTime},#{departureType})
     </insert>
 
-    <update id="update" parameterType="ZzzlPo">
-        UPDATE zzzl SET
-        ear_number=#{earNumber},gender=#{gender},state=#{state},is_present=#{isPresent},
-        age=#{age},varieties=#{varieties},house_number=#{houseNumber},approach_time=#{approachTime},
-        approach_type=#{approachType},departure_type=#{departureType} WHERE id=#{id}
+    <update id="update" parameterType="ZzglPo">
+        UPDATE zzgl SET
+        ear_number=#{earNumber},gender=#{gender},is_present=#{isPresent},
+        age=#{age},varieties=#{varieties},production_situation=#{productionSituation}, is_transfer=#{isTransfer},
+        current_house_number=#{currentHouseNumber},before_house_number=#{beforeHouseNumber},approach_weight=#{approachWeight},
+       approach_time=#{approachTime},approach_type=#{approachType},leaving_time=#{leavingTime},departure_type=#{departureType}
+       WHERE id=#{id}
     </update>
 
-    <select id="selectByPrimaryKey" resultType="ZzzlPo" >
+    <select id="selectByPrimaryKey" resultType="ZzglPo" >
         select
         <include refid="Base_Column_List" />
-        from zzzl
-        <if test="id!=null">
-            where id=#{id}
-        </if>
+        from zzgl
+        where id=#{id}
     </select>
-    <select id="selectByEarNum" resultType="ZzzlPo" >
+    <select id="selectByEarNum" resultType="ZzglPo" >
         select
         <include refid="Base_Column_List" />
-        from zzzl
-        <if test="earNumber!=null">
+        from zzgl
             where ear_number=#{earNumber}
-        </if>
     </select>
     <delete id="deleteById">
-        DELETE FROM zzzl WHERE id=#{id}
+        DELETE FROM zzgl WHERE id=#{id}
     </delete>
 
     <delete id="deleteByIds">
-        DELETE FROM zzzl WHERE id=#{id}
+        DELETE FROM zzgl WHERE id=#{id}
     </delete>
 
-    <select id="selectByExample" resultType="ZzzlPo">
+    <select id="selectByExample" resultType="ZzglPo">
         select
         <include refid="Base_Column_List" />
-        from zzzl
+        from zzgl
         <where>
             <if test="earNumber!=null and earNumber!=''">
                 and ear_number=#{earNumber}
@@ -65,8 +67,17 @@
             <if test="age!=null and age!=''">
                 and age=#{age}
             </if>
-            <if test="houseNumber !=null and houseNumber !=''">
-                and house_number=#{houseNumber}
+            <if test="currentHouseNumber !=null and currentHouseNumber !=''">
+                and current_house_number=#{currentHouseNumber}
+            </if>
+             <if test="beforeHouseNumber !=null and beforeHouseNumber !=''">
+                and before_house_number=#{beforeHouseNumber}
+            </if>
+            <if test="approachType!=null and approachType!=''">
+                and approach_type=#{approachType}
+            </if>
+            <if test="departureType!=null and departureType!=''">
+                and departure_type=#{departureType}
             </if>
         </where>
     </select>

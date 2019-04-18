@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @description:
+ * @description: 分页封装的结果集
  * @author: 稚生
  * @date: 2019/4/15 11:40
  * @version: V1.0

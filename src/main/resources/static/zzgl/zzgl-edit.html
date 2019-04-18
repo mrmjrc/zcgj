@@ -3,7 +3,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>zzzl_add</title>
+    <title>zzzl_edit</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -21,22 +21,22 @@
 
       <script type="text/javascript" src="../js/angularjs/angular.min.js"></script>
       <script type="text/javascript" src="../js/base.js"></script>
-      <script type="text/javascript" src="../js/service/zzzlService.js"></script>
+      <script type="text/javascript" src="../js/service/zzglService.js"></script>
       <script type="text/javascript" src="../js/controller/baseController.js"></script>
-      <script type="text/javascript" src="../js/controller/zzzlController.js"></script>
+      <script type="text/javascript" src="../js/controller/zzglController.js"></script>
 
   </head>
 
-  <body ng-app="guanli" ng-controller="zzzlController">
+  <body ng-app="zcgj" ng-controller="zzglController" ng-init="selectById()">
   <div class="x-body">
-      <form class="layui-form" ng-submit="add()">
+      <form class="layui-form" ng-submit="updateById()">
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
                   <span class="x-red">*</span>耳号
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="eh" name="eh" required="" lay-verify="required" ng-model="entity.earNumber"
-                         autocomplete="on" class="layui-input" ng-blur="selectByEarNum(entity.earNumber)" >
+                  <input type="text" disabled="disabled" id="eh" name="eh" required="" lay-verify="required" ng-model="entity.earNumber"
+                         autocomplete="off" class="layui-input" >
               </div>
           </div>
           <div class="layui-form-item">
@@ -45,15 +45,6 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="xb" name="xb" required="" lay-verify="required" ng-model="entity.gender"
-                         autocomplete="on" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>状态
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="zt" name="zt" required="" lay-verify="required" ng-model="entity.state"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
@@ -86,10 +77,46 @@
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>舍号
+                  <span class="x-red"></span>生产情况
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="sh" name="sh" required="" lay-verify="required" ng-model="entity.houseNumber"
+                  <input type="text" id="scqk" name="scqk"  ng-model="entity.productionSituation"
+                         autocomplete="on" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>是否转舍
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="sfzs" name="sfzs" required="" lay-verify="required" ng-model="entity.isTransfer"
+                         autocomplete="on" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>现在舍号
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="xzsh" name="xzsh" required="" lay-verify="required" ng-model="entity.currentHouseNumber"
+                         autocomplete="on" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red"></span>转前舍号
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="zqsh" name="zqsh" ng-model="entity.beforeHouseNumber"
+                         autocomplete="on" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>进场重量
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="jczl" name="jczl" required="" lay-verify="required" ng-model="entity.approachWeight"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
@@ -98,7 +125,7 @@
                   <span class="x-red">*</span>进场时间
               </label>
               <div class="layui-input-inline">
-                  <input class="layui-input" timeFormat="yyyy-MM-dd" placeholder="yyyy-MM-dd" autocomplete="on" name="start" id="start" ng-model="entity.approachTime">
+                  <input class="layui-input" required="" lay-verify="required" timeFormat="yyyy-MM-dd" placeholder="yyyy-MM-dd" autocomplete="on" name="start" id="start" ng-model="entity.approachTime">
               </div>
           </div>
           <div class="layui-form-item">
@@ -108,6 +135,14 @@
               <div class="layui-input-inline">
                   <input type="text" id="jclx" name="jclx" required="" lay-verify="required" ng-model="entity.approachType"
                          autocomplete="on" class="layui-input">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red"></span>离场时间
+              </label>
+              <div class="layui-input-inline">
+                  <input class="layui-input" timeFormat="yyyy-MM-dd" placeholder="yyyy-MM-dd" autocomplete="on" name="end" id="end" ng-model="entity.leavingTime">
               </div>
           </div>
           <div class="layui-form-item">
@@ -122,8 +157,8 @@
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
               </label>
-              <button  class="layui-btn" lay-filter="add" lay-submit="" >
-                  增加
+              <button  class="layui-btn" lay-filter="update" lay-submit="" >
+                  修改
               </button>
           </div>
       </form>
@@ -135,6 +170,9 @@
       //     //执行一个laydate实例
       //     laydate.render({
       //         elem: '#start' //指定元素
+      //     });
+      //     laydate.render({
+      //         elem: '#end' //指定元素
       //     });
       // });
 

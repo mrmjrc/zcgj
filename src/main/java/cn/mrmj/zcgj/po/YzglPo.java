@@ -4,27 +4,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 /**
- * @description:
+ * @description: 幼猪po
  * @author: 稚生
- * @date: 2019/4/17 16:57
+ * @date: 2019/4/18 11:27
  * @version: V1.0
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ZzzlPo implements Serializable {
+public class YzglPo {
     private Integer id;
-    private Integer earNumber;
+    private String earNumber;
+    private String mearNumber;
     private String gender;
-    private String state;
-    private String isPresent;
     private Integer age;
     private String varieties;
-    private String houseNumber;
+    private String isTransfer;
+    private String currentHouseNumber;
+    private String beforeHouseNumber;
+    private String approachWeight;
     private String approachTime;
     private String approachType;
+    private String leavingTime;
     private String departureType;
 }

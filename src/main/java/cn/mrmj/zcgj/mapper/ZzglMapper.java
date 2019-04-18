@@ -1,51 +1,51 @@
 package cn.mrmj.zcgj.mapper;
 
 
-import cn.mrmj.zcgj.po.ZzzlPo;
+import cn.mrmj.zcgj.po.ZzglPo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * @description:
+ * @description: zzgl mapper
  * @author: 稚生
  * @date: 2019/4/12 15:14
  * @version: V1.0
  */
 @Mapper
-public interface ZzzlMapper {
+public interface ZzglMapper {
     /**
      * 数据查询
      * @return list
      */
-    List<ZzzlPo> query();
+    List<ZzglPo> query();
 
     /**
      * 数据添加
      * @return void
      */
-    void insert(ZzzlPo zzzlPo);
+    void insert(ZzglPo zzglPo);
 
     /**
      * 数据更新
-     * @param zzzlPo
+     * @param zzglPo
      */
-    void update(ZzzlPo zzzlPo);
+    void update(ZzglPo zzglPo);
 
     /**
      * 根据关键字id进行查询
      * @param id
      * @return
      */
-    ZzzlPo selectByPrimaryKey(@Param("id")Integer id);
+    ZzglPo selectByPrimaryKey(@Param("id")Integer id);
 
     /**
      * 根据关键字耳号查询
      * @param earNumber
      * @return
      */
-    ZzzlPo selectByEarNum(@Param("earNumber")Integer earNumber);
+    ZzglPo selectByEarNum(@Param("earNumber")String earNumber);
 
     /**
      * 根据id删除
@@ -61,8 +61,8 @@ public interface ZzzlMapper {
 
     /**
      * 根据关键字查询
-     * @param zzzlPo
+     * @param zzglPo
      * @return
      */
-    List<ZzzlPo> selectByExample(ZzzlPo zzzlPo);
+    List<ZzglPo> selectByExample(ZzglPo zzglPo);
 }

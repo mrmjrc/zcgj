@@ -1,1 +1,1 @@
-var app = angular.module('guanli',[]); //定义模块
+var app = angular.module('zcgj',[]); //定义模块

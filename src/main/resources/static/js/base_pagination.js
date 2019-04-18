@@ -1,1 +1,1 @@
-var app=angular.module('guanli',['pagination']);
+var app=angular.module('zcgj',['pagination']);
