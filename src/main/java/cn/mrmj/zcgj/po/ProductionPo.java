@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScglPo {
+public class ProductionPo {
     private Integer id;
     private String earNumber;
     private Integer age;
@@ -21,7 +21,6 @@ public class ScglPo {
     private String parity;
     private String litterSize;
     private String matingTimes;
-    private String breedingBoar;
     private Integer abortionNumber;
     private Integer survivalNumber;
 

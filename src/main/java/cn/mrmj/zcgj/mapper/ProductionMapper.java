@@ -1,51 +1,51 @@
 package cn.mrmj.zcgj.mapper;
 
 
-import cn.mrmj.zcgj.po.RzglPo;
+import cn.mrmj.zcgj.po.ProductionPo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
- * @description: rzgl mapper
+ * @description: Production mapper
  * @author: 稚生
  * @date: 2019/4/12 15:14
  * @version: V1.0
  */
 @Mapper
-public interface ScglMapper {
+public interface ProductionMapper {
     /**
      * 数据查询
      * @return list
      */
-    List<RzglPo> query();
+    List<ProductionPo> query();
 
     /**
      * 数据添加
      * @return void
      */
-    void insert(RzglPo rzglPo);
+    void insert(ProductionPo productionPo);
 
     /**
      * 数据更新
-     * @param rzglPo
+     * @param productionPo
      */
-    void update(RzglPo rzglPo);
+    void update(ProductionPo productionPo);
 
     /**
      * 根据关键字id进行查询
      * @param id
      * @return
      */
-    RzglPo selectByPrimaryKey(@Param("id") Integer id);
+    ProductionPo selectByPrimaryKey(@Param("id") Integer id);
 
     /**
      * 根据关键字耳号查询
      * @param earNumber
      * @return
      */
-    RzglPo selectByEarNum(@Param("earNumber") String earNumber);
+    ProductionPo selectByEarNum(@Param("earNumber") String earNumber);
 
     /**
      * 根据id删除
@@ -61,8 +61,8 @@ public interface ScglMapper {
 
     /**
      * 根据关键字查询
-     * @param rzglPo
+     * @param productionPo
      * @return
      */
-    List<RzglPo> selectByExample(RzglPo rzglPo);
+    List<ProductionPo> selectByExample(ProductionPo productionPo);
 }
