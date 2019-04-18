@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WpglPo {
+public class GoodsPo {
     private Integer id;
     private String recordingTime;
     private String type;
