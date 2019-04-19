@@ -3,7 +3,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>rzgl_edit</title>
+    <title>porkerPig_edit</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -22,93 +22,109 @@
 
       <script type="text/javascript" src="../js/angularjs/angular.min.js"></script>
       <script type="text/javascript" src="../js/base.js"></script>
-      <script type="text/javascript" src="../js/service/goodsService.js"></script>
+      <script type="text/javascript" src="../js/service/porkerPigService.js"></script>
       <script type="text/javascript" src="../js/controller/baseController.js"></script>
-      <script type="text/javascript" src="../js/controller/goodsController.js"></script>
+      <script type="text/javascript" src="../js/controller/porkerPigController.js"></script>
 
   </head>
 
-  <body ng-app="zcgj" ng-controller="goodsController" ng-init="selectById()">
+  <body ng-app="zcgj" ng-controller="porkerPigController" ng-init="selectById()">
   <div class="x-body">
       <form class="layui-form" ng-submit="updateById()">
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>记录时间
+                  <span class="x-red">*</span>耳号
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="jlsj" name="jlsj" required="" lay-verify="required" ng-model="entity.recordingTime"
-                         autocomplete="on" class="layui-input"  >
+                  <input type="text" id="eh" name="eh" disabled="disabled" required="" lay-verify="required" ng-model="entity.earNumber"
+                         autocomplete="on" class="layui-input" ng-blur="selectByEarNum(entity.earNumber)" >
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>类型
+                  <span class="x-red">*</span>日龄
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="lx" name="lx" required="" lay-verify="required" ng-model="entity.type"
+                  <input type="text" id="rl" name="rl" required="" lay-verify="required" ng-model="entity.age"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>名称
+                  <span class="x-red">*</span>品种
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="mc" name="mc" required="" lay-verify="required" ng-model="entity.name"
+                  <input type="text" id="pz" name="pz" required="" lay-verify="required" ng-model="entity.varieties"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>单位
+                  <span class="x-red">*</span>是否转舍
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="dw" name="dw" required="" lay-verify="required" ng-model="entity.unit"
+                  <input type="text" id="sfzs" name="sfzs" required="" lay-verify="required" ng-model="entity.isTransfer"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>供应商
+                  <span class="x-red">*</span>现在舍号
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="gys" name="gys" required="" lay-verify="required" ng-model="entity.supplier"
+                  <input type="text" id="xzsh" name="xzsh" required="" lay-verify="required" ng-model="entity.currentHouseNumber"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>购买数量
+                  <span class="x-red"></span>转前舍号
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="gmsl" name="gmsl" required="" lay-verify="required" ng-model="entity.number"
+                  <input type="text" id="zqsh" name="zqsh"  ng-model="entity.beforeHouseNumber"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>单价
+                  <span class="x-red">*</span>进场重量
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="dj" name="dj" required="" lay-verify="required" ng-model="entity.unitPrice"
+                  <input type="text" id="jczl" name="jczl" required="" lay-verify="required" ng-model="entity.approachWeight"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>实际支出
+                  <span class="x-red">*</span>进场时间
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="sjzc" name="sjzc" required="" lay-verify="required" ng-model="entity.actualExpenditure"
+                  <input class="layui-input" timeFormat="yyyy-MM-dd" placeholder="yyyy-MM-dd" autocomplete="on" name="start" id="start" ng-model="entity.approachTime">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>进场类型
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="jclx" name="jclx" required="" lay-verify="required" ng-model="entity.approachType"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>备注
+                  <span class="x-red"></span>离场时间
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="bz" name="bz" required="" lay-verify="required" ng-model="entity.remarks"
+                  <input class="layui-input" timeFormat="yyyy-MM-dd" placeholder="yyyy-MM-dd" autocomplete="on" name="end" id="end" ng-model="entity.leavingTime">
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>离场类型
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="lclx" name="lclx" required="" lay-verify="required" ng-model="entity.departureType"
                          autocomplete="on" class="layui-input">
               </div>
           </div>

@@ -22,93 +22,66 @@
 
       <script type="text/javascript" src="../js/angularjs/angular.min.js"></script>
       <script type="text/javascript" src="../js/base.js"></script>
-      <script type="text/javascript" src="../js/service/goodsService.js"></script>
+      <script type="text/javascript" src="../js/service/bioSafetyService.js"></script>
       <script type="text/javascript" src="../js/controller/baseController.js"></script>
-      <script type="text/javascript" src="../js/controller/goodsController.js"></script>
+      <script type="text/javascript" src="../js/controller/bioSafetyController.js"></script>
 
   </head>
 
-  <body ng-app="zcgj" ng-controller="goodsController" ng-init="selectById()">
+  <body ng-app="zcgj" ng-controller="bioSafetyController" ng-init="selectById()">
   <div class="x-body">
       <form class="layui-form" ng-submit="updateById()">
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>记录时间
+                  <span class="x-red">*</span>耳号
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="jlsj" name="jlsj" required="" lay-verify="required" ng-model="entity.recordingTime"
-                         autocomplete="on" class="layui-input"  >
+                  <input type="text" id="eh" name="eh" disabled="disabled" required="" lay-verify="required" ng-model="entity.earNumber"
+                         autocomplete="on" class="layui-input"   ng-blur="selectByEarNum(entity.earNumber)">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>类型
+                  <span class="x-red">*</span>体检情况
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="lx" name="lx" required="" lay-verify="required" ng-model="entity.type"
+                  <input type="text" id="tjqk" name="tjqk" required="" lay-verify="required" ng-model="entity.physicalExamination"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>名称
+                  <span class="x-red">*</span>免疫情况
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="mc" name="mc" required="" lay-verify="required" ng-model="entity.name"
+                  <input type="text" id="myqk" name="myqk" required="" lay-verify="required" ng-model="entity.immuneStatus"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>单位
+                  <span class="x-red">*</span>疫苗接种类型
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="dw" name="dw" required="" lay-verify="required" ng-model="entity.unit"
+                  <input type="text" id="ymjzlx" name="ymjzlx" required="" lay-verify="required" ng-model="entity.vaccinationType"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>供应商
+                  <span class="x-red">*</span>消毒情况
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="gys" name="gys" required="" lay-verify="required" ng-model="entity.supplier"
+                  <input type="text" id="xuqk" name="xuqk" required="" lay-verify="required" ng-model="entity.disinfectionSituation"
                          autocomplete="on" class="layui-input">
               </div>
           </div>
           <div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>购买数量
+                  <span class="x-red">*</span>疾病
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="gmsl" name="gmsl" required="" lay-verify="required" ng-model="entity.number"
-                         autocomplete="on" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>单价
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="dj" name="dj" required="" lay-verify="required" ng-model="entity.unitPrice"
-                         autocomplete="on" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>实际支出
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="sjzc" name="sjzc" required="" lay-verify="required" ng-model="entity.actualExpenditure"
-                         autocomplete="on" class="layui-input">
-              </div>
-          </div>
-          <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>备注
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="bz" name="bz" required="" lay-verify="required" ng-model="entity.remarks"
+                  <input type="text" id="jb" name="jb" required="" lay-verify="required" ng-model="entity.diseaseCondition"
                          autocomplete="on" class="layui-input">
               </div>
           </div>

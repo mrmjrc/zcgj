@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.mrmj.zcgj.mapper.BioSafetyMapper">
+    <sql id="Base_Column_List" >
+           id,ear_number,physical_examination,immune_status,
+           vaccination_type,disinfection_situation,disease_condition
+    </sql>
+
+    <select id="query" resultType="BioSafetyPo">
+        select
+         <include refid="Base_Column_List" />
+         from bio_safety
+    </select>
+
+    <insert id="insert" parameterType="BioSafetyPo" >
+        INSERT INTO bio_safety(ear_number,physical_examination,immune_status,
+           vaccination_type,disinfection_situation,disease_condition)
+        VALUES(#{earNumber},#{physicalExamination},#{immuneStatus},#{vaccinationType},#{disinfectionSituation},
+        #{diseaseCondition})
+    </insert>
+
+    <update id="update" parameterType="BioSafetyPo">
+        UPDATE bio_safety SET
+         ear_number=#{earNumber},physical_examination=#{physicalExamination},
+         immune_status=#{immuneStatus},vaccination_type=#{vaccinationType},disinfection_situation=#{disinfectionSituation},
+        disease_condition=#{diseaseCondition}
+       WHERE id=#{id}
+    </update>
+
+    <select id="selectByPrimaryKey" resultType="BioSafetyPo" >
+        select
+        <include refid="Base_Column_List" />
+        from bio_safety
+        where id=#{id}
+    </select>
+    <select id="selectByEarNum" resultType="BioSafetyPo" >
+        select
+        <include refid="Base_Column_List" />
+        from bio_safety
+            where ear_number=#{earNumber}
+    </select>
+    <delete id="deleteById">
+        DELETE FROM bio_safety WHERE id=#{id}
+    </delete>
+
+    <delete id="deleteByIds">
+        DELETE FROM bio_safety WHERE id=#{id}
+    </delete>
+
+    <select id="selectByExample" resultType="BioSafetyPo">
+        select
+        <include refid="Base_Column_List" />
+        from bio_safety
+        <where>
+            <if test="earNumber!=null and earNumber!=''">
+                and ear_number=#{earNumber}
+            </if>
+            <if test="vaccinationType!=null and vaccinationType!=''">
+                and vaccination_type=#{vaccinationType}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>
