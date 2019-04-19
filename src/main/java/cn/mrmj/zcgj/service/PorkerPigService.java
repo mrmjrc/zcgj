@@ -10,7 +10,7 @@ import cn.mrmj.zcgj.po.PorkerPigPo;
  * @version: V1.0
  */
 public interface PorkerPigService {
-   public PageResult findPorkerPig(int pageNum, int pageSize);
+   public PageResult findPorkerPig();
 
     public void addPorkerPig(PorkerPigPo porkerPigPo);
 

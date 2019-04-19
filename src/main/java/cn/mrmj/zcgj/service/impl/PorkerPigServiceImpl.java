@@ -23,10 +23,8 @@ public class PorkerPigServiceImpl implements PorkerPigService {
     private PorkerPigMapper porkerPigMapper;
 
     @Override
-    public PageResult findPorkerPig(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        Page<PorkerPigPo> page = (Page<PorkerPigPo>) porkerPigMapper.query();
-        return new PageResult(page.getTotal(),page.getResult());
+    public PageResult findPorkerPig() {
+        return new PageResult(porkerPigMapper.queryCount(),porkerPigMapper.query());
     }
 
     @Override

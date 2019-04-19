@@ -26,10 +26,11 @@ public class PorkerPigController {
     @Resource
     private PorkerPigService porkerPigService;
 
-    @RequestMapping("/findPage")
+
+    @RequestMapping("/findAll")
     @ResponseBody
-    public PageResult query(int page, int size) {
-        return porkerPigService.findPorkerPig(page, size);
+    public PageResult query() {
+        return porkerPigService.findPorkerPig();
     }
 
     @RequestMapping("/add")

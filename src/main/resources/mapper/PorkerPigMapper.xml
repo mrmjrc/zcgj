@@ -14,6 +14,9 @@
          <include refid="Base_Column_List" />
          from porker_pig
     </select>
+    <select id="queryCount" resultType="int">
+        select count(*) from porker_pig
+    </select>
 
     <insert id="insert" parameterType="PorkerPigPo" >
         INSERT INTO porker_pig(ear_number,age,varieties,
