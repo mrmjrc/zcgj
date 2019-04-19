@@ -23,10 +23,10 @@ public class BreedingPigServiceImpl implements BreedingPigService {
     private BreedingPigMapper breedingPigMapper;
 
     @Override
-    public PageResult findBreedingPig(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        Page<BreedingPigPo> page = (Page<BreedingPigPo>) breedingPigMapper.query();
-        return new PageResult(page.getTotal(),page.getResult());
+    public PageResult findBreedingPig() {
+
+
+        return new PageResult(breedingPigMapper.queryCount(),breedingPigMapper.query());
     }
 
     @Override

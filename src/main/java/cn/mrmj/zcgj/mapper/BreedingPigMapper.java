@@ -22,6 +22,11 @@ public interface BreedingPigMapper {
     List<BreedingPigPo> query();
 
     /**
+     * 查询总数
+     * @return
+     */
+    int queryCount();
+    /**
      * 数据添加
      * @return void
      */

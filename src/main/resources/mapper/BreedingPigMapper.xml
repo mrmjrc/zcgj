@@ -9,6 +9,10 @@
            approach_time,approach_type,leaving_time,departure_type
     </sql>
 
+    <select id="queryCount" resultType="int">
+        select count(*) from breeding_pig
+    </select>
+
     <select id="query" resultType="BreedingPigPo">
         select
          <include refid="Base_Column_List" />

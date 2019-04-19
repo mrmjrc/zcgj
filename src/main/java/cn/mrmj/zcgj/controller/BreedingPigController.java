@@ -26,10 +26,10 @@ public class BreedingPigController {
     @Resource
     private BreedingPigService breedingPigService;
 
-    @RequestMapping("/findPage")
+    @RequestMapping("/findAll")
     @ResponseBody
-    public PageResult query(int page, int size) {
-        return breedingPigService.findBreedingPig(page, size);
+    public PageResult query() {
+        return breedingPigService.findBreedingPig();
     }
 
     @RequestMapping("/add")

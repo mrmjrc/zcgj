@@ -10,7 +10,7 @@ import cn.mrmj.zcgj.po.BreedingPigPo;
  * @version: V1.0
  */
 public interface BreedingPigService {
-   public PageResult findBreedingPig(int pageNum , int pageSize);
+   public PageResult findBreedingPig();
 
     public void addBreedingPig(BreedingPigPo breedingPigPo);
 
