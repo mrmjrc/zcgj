@@ -12,7 +12,7 @@ import cn.mrmj.zcgj.po.ProductionPo;
  */
 public interface GoodsService {
 
-    public PageResult findGoods(int pageNum, int pageSize);
+    public PageResult findGoods();
 
     public void addGoods(GoodsPo goodsPo);
 

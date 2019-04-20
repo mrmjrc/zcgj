@@ -26,11 +26,12 @@ public class BioSafetyController {
     @Resource
     private BioSafetyService bioSafetyService;
 
-    @RequestMapping("/findPage")
+    @RequestMapping("/findAll")
     @ResponseBody
-    public PageResult query(int page, int size) {
-        return bioSafetyService.findBioSafety(page, size);
+    public PageResult query() {
+        return bioSafetyService.findBioSafety();
     }
+
 
     @RequestMapping("/add")
     @ResponseBody

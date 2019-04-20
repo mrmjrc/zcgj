@@ -26,10 +26,10 @@ public class GoodsController {
     @Resource
     private GoodsService goodsService;
 
-    @RequestMapping("/findPage")
+    @RequestMapping("/findAll")
     @ResponseBody
-    public PageResult query(int page, int size) {
-        return goodsService.findGoods(page, size);
+    public PageResult query() {
+        return goodsService.findGoods();
     }
 
     @RequestMapping("/add")

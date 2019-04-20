@@ -23,10 +23,8 @@ public class GoodsServiceImpl implements GoodsService {
     private GoodsMapper goodsMapper;
 
     @Override
-    public PageResult findGoods(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        Page<GoodsPo> page = (Page<GoodsPo>) goodsMapper.query();
-        return new PageResult(page.getTotal(),page.getResult());
+    public PageResult findGoods() {
+        return new PageResult(goodsMapper.queryCount(),goodsMapper.query());
     }
 
     @Override

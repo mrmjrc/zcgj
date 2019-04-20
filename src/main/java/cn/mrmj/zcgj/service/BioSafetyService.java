@@ -10,7 +10,7 @@ import cn.mrmj.zcgj.po.BioSafetyPo;
  * @version: V1.0
  */
 public interface BioSafetyService {
-   public PageResult findBioSafety(int pageNum, int pageSize);
+   public PageResult findBioSafety();
 
     public void addBioSafety(BioSafetyPo bioSafetyPo);
 

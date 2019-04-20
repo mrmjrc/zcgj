@@ -11,7 +11,7 @@ import cn.mrmj.zcgj.po.ProductionPo;
  */
 public interface ProductionService {
 
-    public PageResult findProduction(int pageNum, int pageSize);
+    public PageResult findProduction();
 
     public void addProduction(ProductionPo productionPo);
 

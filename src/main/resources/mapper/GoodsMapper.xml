@@ -13,6 +13,9 @@
          <include refid="Base_Column_List" />
          from goods
     </select>
+    <select id="queryCount" resultType="int">
+        select count(*) from goods
+    </select>
 
     <insert id="insert" parameterType="GoodsPo" >
         INSERT INTO goods(recording_time,type,name,unit,supplier,number,

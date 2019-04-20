@@ -13,6 +13,9 @@
          <include refid="Base_Column_List" />
          from bio_safety
     </select>
+    <select id="queryCount" resultType="int">
+        select count(*) from bio_safety
+    </select>
 
     <insert id="insert" parameterType="BioSafetyPo" >
         INSERT INTO bio_safety(ear_number,physical_examination,immune_status,

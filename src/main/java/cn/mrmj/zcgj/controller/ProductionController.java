@@ -26,10 +26,10 @@ public class ProductionController {
     @Resource
     private ProductionService productionService;
 
-    @RequestMapping("/findPage")
+    @RequestMapping("/findAll")
     @ResponseBody
-    public PageResult query(int page, int size) {
-        return productionService.findProduction(page, size);
+    public PageResult query() {
+        return productionService.findProduction();
     }
 
     @RequestMapping("/add")

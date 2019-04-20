@@ -31,10 +31,11 @@ public class YoungPigController {
     @Resource
     private YoungPigService youngPigService;
 
-    @RequestMapping("/findPage")
+
+    @RequestMapping("/findAll")
     @ResponseBody
-    public PageResult query(int page, int size) {
-        return youngPigService.findYoungPig(page, size);
+    public PageResult query() {
+        return youngPigService.findYoungPig();
     }
 
     @RequestMapping("/add")

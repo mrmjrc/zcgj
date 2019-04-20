@@ -27,10 +27,8 @@ public class YoungPigServiceImpl implements YoungPigService {
     private BreedingPigMapper breedingPigMapper;
 
     @Override
-    public PageResult findYoungPig(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        Page<YoungPigPo> page = (Page<YoungPigPo>) youngPigMapper.query();
-        return new PageResult(page.getTotal(),page.getResult());
+    public PageResult findYoungPig() {
+        return new PageResult(youngPigMapper.queryCount(),youngPigMapper.query());
     }
 
     @Override

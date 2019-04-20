@@ -23,5 +23,4 @@ public class ProductionPo {
     private String matingTimes;
     private Integer abortionNumber;
     private Integer survivalNumber;
-
 }

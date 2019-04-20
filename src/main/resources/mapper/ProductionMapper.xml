@@ -15,6 +15,10 @@
          from production
     </select>
 
+    <select id="queryCount" resultType="int">
+        select count(*) from production
+    </select>
+
     <insert id="insert" parameterType="ProductionPo" >
         INSERT INTO production(ear_number,age,current_house_number,
            parity,litter_size,mating_times,abortion_number,

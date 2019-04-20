@@ -11,7 +11,7 @@ import cn.mrmj.zcgj.po.BreedingPigPo;
  * @version: V1.0
  */
 public interface YoungPigService {
-   public PageResult findYoungPig(int pageNum, int pageSize);
+   public PageResult findYoungPig();
 
     public void addYoungPig(YoungPigPo youngPigPo);
 

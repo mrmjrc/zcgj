@@ -23,10 +23,8 @@ public class BioSafetyServiceImpl implements BioSafetyService {
     private BioSafetyMapper bioSafetyMapper;
 
     @Override
-    public PageResult findBioSafety(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        Page<BioSafetyPo> page = (Page<BioSafetyPo>) bioSafetyMapper.query();
-        return new PageResult(page.getTotal(),page.getResult());
+    public PageResult findBioSafety() {
+        return new PageResult(bioSafetyMapper.queryCount(),bioSafetyMapper.query());
     }
 
     @Override

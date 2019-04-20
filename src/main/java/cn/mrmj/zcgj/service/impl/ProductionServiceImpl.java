@@ -23,10 +23,8 @@ public class ProductionServiceImpl implements ProductionService {
     private ProductionMapper productionMapper;
 
     @Override
-    public PageResult findProduction(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        Page<ProductionPo> page = (Page<ProductionPo>) productionMapper.query();
-        return new PageResult(page.getTotal(),page.getResult());
+    public PageResult findProduction() {
+        return new PageResult(productionMapper.queryCount(),productionMapper.query());
     }
 
     @Override

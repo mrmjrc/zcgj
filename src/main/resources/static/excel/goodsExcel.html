@@ -1,0 +1,85 @@
+<!doctype html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>物品信息excel导出</title>
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <link rel="stylesheet" href="../css/font.css">
+        <link rel="stylesheet" href="../css/xadmin.css">
+        <!--layui插件引入-->
+        <link rel="stylesheet" type="text/css" href="../lib/layui/css/layui.css">
+        <script type="text/javascript" src="../lib/layui/layui.js"></script>
+        <!--手动加载 excel 插件-->
+        <script type="text/javascript">
+            layui.config({
+                base: '../layui_exts/'
+            }).extend({
+                excel: 'excel'
+            });
+        </script>
+        <!--导出方法-->
+        <script>
+            var Export = function exportApi() {
+                layui.use(['jquery', 'excel', 'layer'], function() {
+                    var $ = layui.jquery;
+                    var layer = layui.layer;
+                    var excel = layui.excel;
+                    $.ajax({
+                        url: '../goods/findAll'
+                        ,dataType: 'json'
+                        ,success: function(response) {
+                            var data = response.rows;
+                            console.log(data);
+                            // 重点！！！如果后端给的数据顺序和映射关系不对，请执行梳理函数后导出
+                            data = excel.filterExportData(data, {
+                                recordingTime: 'recordingTime'
+                                ,type: 'type'
+                                ,name: 'name'
+                                ,unit: 'unit'
+                                ,supplier: 'supplier'
+                                ,number: 'number'
+                                ,unitPrice: 'unitPrice'
+                                ,actualExpenditure: 'actualExpenditure'
+                                ,remarks: 'remarks'
+                            });
+                            // 重点2！！！一般都需要加一个表头，表头的键名顺序需要与最终导出的数据一致
+                            data.unshift({recordingTime:'记录时间',type:'类型',name:'名称',
+                                unit:'单位',supplier:'供应商',number:'购买数量',unitPrice:'单价',
+                                actualExpenditure:'实际支出',remarks:'备注'});
+
+                            var timestart = Date.now();
+                            excel.exportExcel({
+                                sheet1: data
+                            }, '物品数据.xlsx', 'xlsx');
+                            var timeend = Date.now();
+
+                            var spent = (timeend - timestart) / 1000;
+                            layer.alert('单纯导出耗时 '+spent+' s');
+                        }
+                        ,error: function() {
+                            layer.alert('获取数据失败，请检查是否部署在本地服务器环境下');
+                        }
+                    });
+                });
+            }
+        </script>
+
+        <style type="text/css">
+            div{
+                text-align: center;
+            }
+        </style>
+
+    </head>
+
+
+    <body>
+    <div>
+    <button type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal"  onclick="Export()">物品数据导出</button>
+    </div>
+
+    </body>
+</html>
