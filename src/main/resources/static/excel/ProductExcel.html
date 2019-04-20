@@ -28,7 +28,7 @@
                     var layer = layui.layer;
                     var excel = layui.excel;
                     $.ajax({
-                        url: '../porkerPig/findAll'
+                        url: '../product/findAll'
                         ,dataType: 'json'
                         ,success: function(response) {
                             var data = response.rows;
@@ -77,7 +77,7 @@
 
     <body>
     <div>
-    <button type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal"  onclick="Export()">种猪数据导出</button>
+    <button type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal"  onclick="Export()">生产数据导出</button>
     </div>
 
     </body>
