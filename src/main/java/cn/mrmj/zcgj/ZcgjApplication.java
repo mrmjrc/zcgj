@@ -10,7 +10,7 @@ import java.util.Properties;
 
 @SpringBootApplication
 @MapperScan(basePackages = {"cn.mrmj.zcgj.mapper"})
-public class ZcgjApplication {
+public class ZcgjApplication  {
 
     public static void main(String[] args) {
         SpringApplication.run(ZcgjApplication.class, args);

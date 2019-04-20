@@ -13,7 +13,11 @@
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
     <script type="text/javascript" src="./js/cookie.js"></script>
-
+    <script>
+        var reg = function () {
+            window.location.href='./register.html';
+        }
+    </script>
 </head>
 <body class="login-bg">
     <div class="login layui-anim layui-anim-up">
@@ -28,7 +32,7 @@
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
         </form>
-            <input value="注册"  style="width:100%;" type="submit">
+            <input value="注册"  style="width:100%;" type="submit" onclick="reg()">
     </div>
 
     <script>

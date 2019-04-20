@@ -12,7 +12,6 @@ public class SmsListener {
 
     @Autowired
     private SmsUtil smsUtil;
-
     public void sendSms(Map<String,String> map) {
         try {
             SendSmsResponse response = smsUtil.sendSms(

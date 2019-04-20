@@ -20,6 +20,7 @@ public class UserRegisterPo implements Serializable {
     private Integer id;
     private String username;
     private String password;
+    private String phone;
     private Date createTime;
     private Date modifyTime;
 

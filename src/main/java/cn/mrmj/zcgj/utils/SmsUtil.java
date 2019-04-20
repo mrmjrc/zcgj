@@ -44,7 +44,7 @@ public class SmsUtil {
     //static final String accessKeyId = "LTAIac4p8qHNx5x2";
     //static final String accessKeySecret = "";
 
-    public SendSmsResponse sendSms(String mobile,String template_code,String sign_name,String param) throws ClientException {
+    public  SendSmsResponse sendSms(String mobile, String template_code, String sign_name, String param) throws ClientException {
 
         System.out.println(mobile+"  "+template_code+"   "+ sign_name+"  "+param);
         String accessKeyId=env.getProperty("accessKeyId");
@@ -116,5 +116,20 @@ public class SmsUtil {
 
         return querySendDetailsResponse;
     }
+
+/*
+    public static void main(String[] args) throws ClientException, InterruptedException {
+
+        //发短信
+        SendSmsResponse response = sendSms("15993877981","SMS_160855735","慕容梦洁","{\"name\":\"mrmj\"}");
+        System.out.println("短信接口返回的数据----------------");
+        System.out.println("Code=" + response.getCode());
+        System.out.println("Message=" + response.getMessage());
+        System.out.println("RequestId=" + response.getRequestId());
+        System.out.println("BizId=" + response.getBizId());
+
+        Thread.sleep(3000L);
+    }
+*/
 
 }

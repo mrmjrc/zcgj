@@ -14,27 +14,33 @@
     <script type="text/javascript" src="./js/xadmin.js"></script>
     <script type="text/javascript" src="./js/cookie.js"></script>
 
+    <script type="text/javascript" src="./js/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/service/registerService.js"></script>
+    <script type="text/javascript" src="./js/controller/registerController.js"></script>
+
+
 </head>
-<body class="login-bg">
+<body class="login-bg" ng-app="zcgj" ng-controller="registerController">
     <div class="login layui-anim layui-anim-up">
         <div class="message">用户注册</div>
         <div id="darkbannerwrap"></div>
 
-        <form method="post" class="layui-form" >
-            <input type="text" id="user" name="account" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+        <form method="post" class="layui-form"  ng-submit="reg()">
+            <input type="text" id="user" name="account" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" ng-model="entity.username"  ng-blur="selectUser(entity.username)">
             <hr class="hr15">
-            <input type="password" id="pwd" name="password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="password"  id="pwd" name="password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" ng-model="entity.password">
             <hr class="hr15">
-            <input type="password" id="rpwd" name="repassword" required  lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
+            <input type="password" id="rpwd" name="repassword" required  lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input" ng-model="password">
             <hr class="hr15">
-            <input name="phone" lay-verify="required" placeholder="输入手机号"  type="text" class="layui-input"> <button type="submit" lay-submit lay-filter="sub" class="layui-btn">获取验证码</button>
+            <input name="phone" lay-verify="required" placeholder="输入手机号"  type="text" class="layui-input" ng-model="entity.phone"> <button  lay-submit lay-filter="sub" class="layui-btn" ng-click="sendCode()">获取验证码</button>
             <hr class="hr15">
-            <input name="yzm" lay-verify="required" placeholder="输入验证码"  type="text" class="layui-input">
+            <input name="yzm" lay-verify="required" placeholder="输入验证码"  type="text" class="layui-input" ng-model="smsCode">
             <hr class="hr15">
 
             <input value="注册" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
-            <p style="width: 85%"><a href="login.html" class="fl">已有账号？立即登录</a><a href="javascript:;" class="fr">忘记密码？</a></p>
+            <p style="width: 85%"><a href="login.html" class="fl">已有账号？立即登录</a></p>
         </form>
     </div>
     <script type="text/javascript">
@@ -42,30 +48,6 @@
             var form   = layui.form;
             var $      = layui.jquery;
             var layer  = layui.layer;
-            //添加表单失焦事件
-            //验证表单
-            $('#user').blur(function() {
-                var user = $(this).val();
-                //alert(user);
-                $.ajax({
-                    url:'checkUser.php',
-                    type:'post',
-                    dataType:'text',
-                    data:{user:user},
-                    //验证用户名是否可用
-                    success:function(data){
-                        if (data == 1) {
-                            $('#ri').removeAttr('hidden');
-                            $('#wr').attr('hidden','hidden');
-                        } else {
-                            $('#wr').removeAttr('hidden');
-                            $('#ri').attr('hidden','hidden');
-                            layer.msg('当前用户名已被占用! ')
-                        }
-                    }
-                })
-
-            });
 
             // 为密码添加正则验证
             $('#pwd').blur(function() {
@@ -92,31 +74,6 @@
                     $('#rpwr').attr('hidden','hidden');
                 };
             });
-
-            //
-            //添加表单监听事件,提交注册信息
-            form.on('submit(sub)', function() {
-                $.ajax({
-                    url:'reg.php',
-                    type:'post',
-                    dataType:'text',
-                    data:{
-                        user:$('#user').val(),
-                        pwd:$('#pwd').val(),
-                    },
-                    success:function(data){
-                        if (data == 1) {
-                            layer.msg('注册成功');
-                            ///location.href = "login.html";
-                        }else {
-                            layer.msg('注册失败');
-                        }
-                    }
-                })
-                //防止页面跳转
-                return false;
-            });
-
         });
     </script>
     <!-- 底部结束 -->
