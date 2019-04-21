@@ -24,10 +24,10 @@
         <div class="message">系统登录</div>
         <div id="darkbannerwrap"></div>
 
-        <form method="post" class="layui-form" >
-            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+        <form method="post" class="layui-form" action="/login">
+            <input name="username" id="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
-            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <input name="password" id="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
@@ -35,7 +35,7 @@
             <input value="注册"  style="width:100%;" type="submit" onclick="reg()">
     </div>
 
-    <script>
+  <!--  <script>
         $(function  () {
             layui.use('form', function(){
               var form = layui.form;
@@ -55,7 +55,7 @@
 
 
     </script>
-
+-->
     <!-- 底部结束 -->
 </body>
 </html>

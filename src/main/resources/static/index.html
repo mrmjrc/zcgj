@@ -19,11 +19,17 @@
         // 是否开启刷新记忆tab功能
         // var is_remember = false;
     </script>
+    <script type="text/javascript" src="./js/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/service/loginService.js"></script>
+    <script type="text/javascript" src="./js/controller/loginController.js"></script>
+
+
 </head>
-<body>
+<body ng-app="zcgj" ng-controller="loginController" ng-init="showLoginName()">
     <!-- 顶部开始 -->
     <div class="container">
-        <div class="logo"><a href="./index.html">管理系统</a></div>
+        <div class="logo"><a href="./index.html">猪场管理</a></div>
         <div class="left_open">
             <i title="展开左侧栏" class="iconfont">&#xe699;</i>
         </div>
@@ -40,14 +46,13 @@
         </ul>
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
+            <a href="javascript:;">{{loginName}}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a onclick="x_admin_show('个人信息','https://www.murongmengjie.cn')">个人信息</a></dd>
-              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-              <dd><a href="./login.html">退出</a></dd>
+              <dd><a href="/logout">个人信息</a></dd>
+              <dd><a href="/logout">退出</a></dd>
             </dl>
           </li>
-          <li class="layui-nav-item to-index"><a href="./index.html">前台首页</a></li>
+         <!-- <li class="layui-nav-item to-index"><a href="./index.html">前台首页</a></li>-->
         </ul>
         
     </div>
