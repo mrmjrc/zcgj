@@ -16,7 +16,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRegisterPo implements Serializable {
+public class UserPo implements Serializable {
     private Integer id;
     private String username;
     private String password;
@@ -24,7 +24,7 @@ public class UserRegisterPo implements Serializable {
     private String phone;
     private String email;
     private String location;
-    private Date createTime;
-    private Date modifyTime;
+    private String createTime;
+    private String modifyTime;
 
 }

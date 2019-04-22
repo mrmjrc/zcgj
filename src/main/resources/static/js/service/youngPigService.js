@@ -9,6 +9,7 @@ app.service("youngPigService",function ($http) {
       return $http.post('../youngPig/selectByEarNum?earNumber='+earNumber);
     };
 
+
     this.selectByMearNum=function (mearNumber) {
       return $http.post('../youngPig/selectByMearNum?mearNumber='+mearNumber);
     };

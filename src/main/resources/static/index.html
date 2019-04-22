@@ -48,7 +48,7 @@
           <li class="layui-nav-item">
             <a href="javascript:;">{{loginName}}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a href="/logout">个人信息</a></dd>
+                <dd><a onclick="x_admin_show('个人信息','./user/password_edit.html')">密码修改</a></dd>
               <dd><a href="/logout">退出</a></dd>
             </dl>
           </li>
@@ -72,17 +72,9 @@
                 </a>
                 <ul class="sub-menu">
                     <li date-refresh="1">
-                        <a _href="member-list.html">
+                        <a _href="/user/user.html">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员列表(静态表格)</cite>
-                            
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="member-list1.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>会员列表(动态表格)</cite>
-                            
+                            <cite>用户信息</cite>
                         </a>
                     </li >
 
@@ -222,15 +214,25 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6ce;</i>
-                    <cite>系统统计</cite>
+                    <cite>溯源查询</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
 
                     <li>
-                        <a _href="echarts4.html">
+                        <a _href="./tracing_to_source/youngSource.html">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>饼图</cite>
+                            <cite>幼猪溯源查询</cite>
+                        </a>
+                    </li>
+
+                </ul>
+                <ul class="sub-menu">
+
+                    <li>
+                        <a _href="./tracing_to_source/breedingSource.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>种猪溯源查询</cite>
                         </a>
                     </li>
 

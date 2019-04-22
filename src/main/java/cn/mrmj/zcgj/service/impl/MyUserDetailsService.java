@@ -1,7 +1,7 @@
 package cn.mrmj.zcgj.service.impl;
 
 import cn.mrmj.zcgj.dto.UserInfo;
-import cn.mrmj.zcgj.po.UserRegisterPo;
+import cn.mrmj.zcgj.po.UserPo;
 import cn.mrmj.zcgj.service.RegisterService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -26,7 +26,7 @@ class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // TODO Auto-generated method stub
-        UserRegisterPo select = registerService.select(username);
+        UserPo select = registerService.select(username);
         //这里可以可以通过username（登录时输入的用户名）然后到数据库中找到对应的用户信息，并构建成我们自己的UserInfo来返回。
         //这里可以通过数据库来查找到实际的用户信息
         if (null == select) {

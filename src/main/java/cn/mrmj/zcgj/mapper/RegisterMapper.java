@@ -1,12 +1,9 @@
 package cn.mrmj.zcgj.mapper;
 
 
-import cn.mrmj.zcgj.po.BioSafetyPo;
-import cn.mrmj.zcgj.po.UserRegisterPo;
+import cn.mrmj.zcgj.po.UserPo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * @description: bio_safety mapper
@@ -20,17 +17,12 @@ public interface RegisterMapper {
      * 用户注册添加
      * @param userRegisterPo
      */
-    void addUser(UserRegisterPo userRegisterPo);
+    void addUser(UserPo userRegisterPo);
 
     /**
      * 查询用户名是否存在
      * @param username
      */
-    UserRegisterPo selectUser(@Param("username") String username);
+    UserPo selectUser(@Param("username") String username);
 
-    /**
-     * 用户修改
-     * @param userRegisterPo
-     */
-    void updateUser(UserRegisterPo userRegisterPo);
 }

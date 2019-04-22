@@ -89,4 +89,14 @@
     </select>
 
 
+    <select id="findYoungPigByBearNum" resultType="YoungPigPo">
+        select
+        <include refid="Base_Column_List" />
+        from young_pig where mear_number=#{mear_number}
+    </select>
+    <select id="queryCountBearNum" resultType="int">
+        select count(*) from young_pig where mear_number=#{mear_number}
+    </select>
+
+
 </mapper>

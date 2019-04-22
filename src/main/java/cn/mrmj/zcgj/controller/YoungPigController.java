@@ -126,6 +126,18 @@ public class YoungPigController {
         return youngPigService.findYoungPig(youngPigPo, page, size);
     }
 
+    @RequestMapping("/selectByNumber")
+    @ResponseBody
+    public YoungPigPo selectByNumber(String earNumber){
+            return  youngPigService.selectByEarNum(earNumber);
+    }
+
+
+    @RequestMapping("/selectYoungByBearNum")
+    @ResponseBody
+    public PageResult selectYoungByBearNum(String earNumber){
+        return youngPigService.findYoungPigByBearNum(earNumber);
+    }
 
 
 

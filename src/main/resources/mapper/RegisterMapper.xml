@@ -3,31 +3,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="cn.mrmj.zcgj.mapper.RegisterMapper">
-    <insert id="addUser" parameterType="UserRegisterPo">
-        insert into user_register (username,password,
+
+    <insert id="addUser" parameterType="UserPo">
+        insert into user (username,password,
         phone,create_time,modify_time)
         values(#{username},#{password},#{phone},#{createTime},#{modifyTime})
     </insert>
 
-    <select id="selectUser" resultType="UserRegisterPo">
+    <select id="selectUser" resultType="UserPo">
         select *
-        from user_register
+        from user
         <where>
             <if test="username!=null and username!=''">
                 username=#{username}
             </if>
         </where>
     </select>
-
-    <update id="updateUser" parameterType="UserRegisterPo">
-        UPDATE user_register SET
-        username=#{username},password=#{password},
-        phone=#{phone},
-        create_time=#{createTime},
-        modify_time=#{modifytime}
-        WHERE id=#{id}
-    </update>
-
    
 
 

@@ -65,6 +65,11 @@ public class YoungPigServiceImpl implements YoungPigService {
         return new PageResult(page.getTotal(),page.getResult());
     }
 
+    @Override
+    public PageResult findYoungPigByBearNum(String earNumber) {
+        return new PageResult(youngPigMapper.queryCountBearNum(earNumber),youngPigMapper.findYoungPigByBearNum(earNumber));
+    }
+
 
     @Override
     public YoungPigPo findOne(Integer id) {

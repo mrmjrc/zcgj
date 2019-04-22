@@ -111,7 +111,12 @@ public class BreedingPigController {
         return breedingPigService.findBreedingPig(breedingPigPo, page, size);
     }
 
+    @RequestMapping("/selectBreeding")
+    @ResponseBody
+    public BreedingPigPo selectBreeding(String earNumber){
+       return  breedingPigService.selectByEarNum(earNumber);
 
+    }
 
 
 }

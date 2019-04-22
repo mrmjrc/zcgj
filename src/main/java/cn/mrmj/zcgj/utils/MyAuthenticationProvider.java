@@ -33,9 +33,9 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
         public Authentication authenticate(Authentication authentication) throws AuthenticationException {
             // TODO Auto-generated method stub
             String userName = authentication.getName();// 这个获取表单输入中返回的用户名;
-            System.out.println("用户名： "+userName);
+            //System.out.println("用户名： "+userName);
             String password = (String) authentication.getCredentials();// 这个是表单中输入的密码；
-            System.out.println("密码： "+password);
+           // System.out.println("密码： "+password);
             // 这里构建来判断用户是否存在和密码是否正确
             UserInfo userInfo = (UserInfo) userDetailService.loadUserByUsername(userName); // 这里调用我们的自己写的获取用户的方法；
             if (userInfo == null) {

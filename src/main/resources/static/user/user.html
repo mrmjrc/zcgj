@@ -34,7 +34,7 @@
 
   </head>
   
-  <body ng-app="zcgj" ng-controller="userController" >
+  <body ng-app="zcgj" ng-controller="userController" ng-init="selectByUsername()">
     <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">用户中心</a>
@@ -69,16 +69,16 @@
             </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="entity in list">
+          <tr >
             <td>
-              <input  name="" lay-skin="primary" ng-click="updateSelection($event,entity.id)"></td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>{{entity.earNumber}}</td>
+            <td>{{entity.id}}</td>
+            <td>{{entity.username}}</td>
             <td>{{entity.gender}}</td>
-            <td>{{entity.isPresent}}</td>
-            <td>{{entity.age}}</td>
-            <td>{{entity.varieties}}</td>
-
+            <td>{{entity.phone}}</td>
+            <td>{{entity.email}}</td>
+            <td>{{entity.location}}</td>
             <td class="td-manage">
               <a title="完善个人信息"   href="javascript:;" ng-click="jumpById(entity.id)">
                 <i class="layui-icon">&#xe63c;</i>

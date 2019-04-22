@@ -1,21 +1,19 @@
 package cn.mrmj.zcgj.service.impl;
 
 import cn.mrmj.zcgj.mapper.RegisterMapper;
-import cn.mrmj.zcgj.po.UserRegisterPo;
+import cn.mrmj.zcgj.po.UserPo;
 import cn.mrmj.zcgj.service.RegisterService;
 import cn.mrmj.zcgj.utils.SmsUtil;
 import com.alibaba.fastjson.JSON;
-import com.aliyuncs.dysmsapi.model.v20170525.QuerySendDetailsResponse;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
-import org.json.JSONML;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,23 +45,20 @@ public class RegisterServiceImpl implements RegisterService {
 
 
     @Override
-    public void add(UserRegisterPo userRegisterPo) {
-        userRegisterPo.setCreateTime(new Date());
-        userRegisterPo.setModifyTime(new Date());
+    public void add(UserPo userRegisterPo) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        userRegisterPo.setCreateTime(dateFormat.format(new Date()));
+        userRegisterPo.setModifyTime(dateFormat.format(new Date()));
         String password = DigestUtils.md5DigestAsHex(userRegisterPo.getPassword().getBytes());
         userRegisterPo.setPassword(password);
         registerMapper.addUser(userRegisterPo);
     }
 
     @Override
-    public UserRegisterPo select(String username) {
+    public UserPo select(String username) {
         return registerMapper.selectUser(username);
     }
 
-    @Override
-    public void update(UserRegisterPo userRegisterPo) {
-        registerMapper.updateUser(userRegisterPo);
-    }
 
     @Override
     public void createSmsCode(String phone) throws ClientException {

@@ -94,4 +94,6 @@ app.controller("youngPigController",function ($scope,$controller,youngPigService
                 $scope.reloadList();
             });
     }
+
+
 });

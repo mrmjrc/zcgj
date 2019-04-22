@@ -70,4 +70,18 @@ public interface YoungPigMapper {
      * @return
      */
     List<YoungPigPo> selectByExample(YoungPigPo youngPigPo);
+
+    /**
+     * 根据母耳号查询
+     * @param earNumber
+     * @return
+     */
+    List<YoungPigPo> findYoungPigByBearNum(@Param("mear_number") String earNumber);
+
+    /**
+     * 根据母耳号查询总数
+     * @param earNumber
+     * @return
+     */
+    int queryCountBearNum(@Param("mear_number") String earNumber);
 }

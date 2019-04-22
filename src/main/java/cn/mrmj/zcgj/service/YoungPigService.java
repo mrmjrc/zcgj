@@ -29,4 +29,6 @@ public interface YoungPigService {
 
   public PageResult findYoungPig(YoungPigPo youngPigPo, int pageNum, int pageSize);
 
+  public PageResult findYoungPigByBearNum(String earNumber);
+
 }

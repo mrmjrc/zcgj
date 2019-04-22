@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>youngPig</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/xadmin.css">
+    <script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/xadmin.js"></script>
+    <script type="text/javascript" src="../js/cookie.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="../js/html5.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script type="text/javascript" src="../js/angularjs/angular.min.js"></script>
+    <!--分页组件-->
+    <script src="../js/angularjs/pagination.js"></script>
+    <link rel="stylesheet" href="../js/angularjs/pagination.css">
+
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script type="text/javascript" src="../js/service/sourceService.js"></script>
+    <script type="text/javascript" src="../js/controller/sourceController.js"></script>
+
+
+
+  </head>
+  
+  <body ng-app="zcgj" ng-controller="sourceController" >
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">溯源管理</a>
+        <a>
+          <cite>幼猪溯源查询</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <div class="layui-row layui-col-md12 x-so">
+
+          <input type="text" name="username"  placeholder="请输入幼猪耳号" autocomplete="true" class="layui-input"  ng-model="searchEntity.earNumber" ng-blur="selectByEarNum(searchEntity.earNumber)">
+
+          <button class="layui-btn"  lay-submit="" lay-filter="sreach" ng-click="selectByNumber(searchEntity.earNumber)" ><i class="layui-icon">&#xe615;</i></button>
+      </div>
+      <xblock>
+      </xblock>
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <th>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>耳号</th>
+            <th>母猪耳号</th>
+            <th>性别</th>
+            <th>日龄</th>
+            <th>品种</th>
+            <th>是否转舍</th>
+            <th>现在舍号</th>
+            <th>转前舍号</th>
+            <th>进场重量</th>
+            <th>进场时间</th>
+            <th>进场类型</th>
+            <th>离场时间</th>
+            <th>离场类型</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>{{entity.earNumber}}</td>
+            <td>{{entity.mearNumber}}</td>
+            <td>{{entity.gender}}</td>
+            <td>{{entity.age}}</td>
+            <td>{{entity.varieties}}</td>
+            <td>{{entity.isTransfer}}</td>
+            <td>{{entity.currentHouseNumber}}</td>
+            <td>{{entity.beforeHouseNumber}}</td>
+            <td>{{entity.approachWeight}}</td>
+            <td>{{entity.approachTime}}</td>
+            <td>{{entity.approachType}}</td>
+            <td>{{entity.leavingTime}}</td>
+            <td>{{entity.departureType}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="page">
+          <!-- 分页 -->
+          <tm-pagination conf="paginationConf"></tm-pagination>
+      </div>
+
+    </div>
+    <script>
+      layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+        });
+      });
+
+      /*用户-删除*/
+    /*  function member_del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              //发异步删除数据
+              $(obj).parents("tr").remove();
+              layer.msg('已删除!',{icon:1,time:1000});
+          });
+      }*/
+
+
+/*
+      function delAll (argument) {
+        var data = tableCheck.getData();
+        layer.confirm('确认要删除吗？'+data,function(index){
+            //捉到所有被选中的，发异步进行删除
+            layer.msg('删除成功', {icon: 1});
+            $(".layui-form-checked").not('.header').parents('tr').remove();
+        });
+      }*/
+    </script>
+
+  </body>
+
+</html>

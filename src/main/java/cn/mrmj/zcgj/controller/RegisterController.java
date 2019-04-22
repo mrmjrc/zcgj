@@ -1,7 +1,7 @@
 package cn.mrmj.zcgj.controller;
 
 import cn.mrmj.zcgj.dto.Result;
-import cn.mrmj.zcgj.po.UserRegisterPo;
+import cn.mrmj.zcgj.po.UserPo;
 import cn.mrmj.zcgj.service.RegisterService;
 import cn.mrmj.zcgj.utils.PhoneFormatCheckUtils;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class RegisterController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public Result addUser(UserRegisterPo userRegisterPo,String smsCode) {
+    public Result addUser(UserPo userRegisterPo, String smsCode) {
        // System.out.println(smsCode);
         boolean b = registerService.checkSmsCode(userRegisterPo.getPhone(), smsCode);
         if (!b) {
