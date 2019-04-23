@@ -45,20 +45,16 @@ public class SmsUtil {
     //static final String accessKeySecret = "";
 
     public  SendSmsResponse sendSms(String mobile, String template_code, String sign_name, String param) throws ClientException {
-
         System.out.println(mobile+"  "+template_code+"   "+ sign_name+"  "+param);
         String accessKeyId=env.getProperty("accessKeyId");
         String accessKeySecret=env.getProperty("accessKeySecret");
-
         //可自助调整超时时间
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");
-
         //初始化acsClient,暂不支持region化
         IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);
         DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);
         IAcsClient acsClient = new DefaultAcsClient(profile);
-
         //组装请求对象-具体描述见控制台-文档部分内容
         SendSmsRequest request = new SendSmsRequest();
         //必填:待发送手机号

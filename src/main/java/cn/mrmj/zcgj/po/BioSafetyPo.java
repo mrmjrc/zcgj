@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @description: 生物安全po
  * @author: 稚生
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BioSafetyPo {
+public class BioSafetyPo implements Serializable {
     private Integer id;
     private String earNumber;
     private String physicalExamination;
