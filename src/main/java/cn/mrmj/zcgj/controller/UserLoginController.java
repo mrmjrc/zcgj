@@ -27,7 +27,7 @@ public class UserLoginController {
     public Map name() {
         //从 security 中获取用户名
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        Map map = new HashMap();
+        Map<String,String> map = new HashMap();
         map.put("loginName", name);
         return map;
     }

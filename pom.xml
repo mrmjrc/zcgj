@@ -11,7 +11,7 @@
     <groupId>cn.mrmj</groupId>
     <artifactId>zcgj</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>zcgj</name>
     <description>zcgj for Spring Boot</description>
 

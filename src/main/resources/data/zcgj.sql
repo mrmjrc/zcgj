@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50562
 File Encoding         : 65001
 
-Date: 2019-04-22 18:06:45
+Date: 2019-04-25 17:29:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -259,7 +259,7 @@ CREATE TABLE `user` (
   `create_time` varchar(255) DEFAULT NULL,
   `modify_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of user
@@ -276,6 +276,7 @@ INSERT INTO `user` VALUES ('13', '9', 'e10adc3949ba59abbe56e057f20f883e', null, 
 INSERT INTO `user` VALUES ('14', '10', 'e10adc3949ba59abbe56e057f20f883e', null, '15993877981', null, null, '2019-04-21 11:03:48', '2019-04-21 11:03:48');
 INSERT INTO `user` VALUES ('15', 'qa', '$2a$10$BvbEGxOtdo3HLsB.RtOQDOcgmGI/3cEXufBwYypvDAjLTW.dDyF66', null, '15993877981', null, null, '2019-04-21 13:10:11', '2019-04-21 13:10:11');
 INSERT INTO `user` VALUES ('16', 'ceshi', '81dc9bdb52d04dc20036dbd8313ed055', '男', '15993877981', '782912842@qq.com', '上海', '2019-04-22', '2019-04-22');
+INSERT INTO `user` VALUES ('17', '任超', '827ccb0eea8a706c4c34a16891f84e7b', '女', '15993877981', 'mrmj782912842@gmail.com', '杭州', '2019-04-24', '2019-04-24');
 
 -- ----------------------------
 -- Table structure for young_pig
